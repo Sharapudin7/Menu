@@ -40,5 +40,5 @@
 </template>
 
 <style lang="scss">
-@import '@/assets/css/navbar.scss';
+@import '@/assets/css/components/navbar.scss';
 </style>

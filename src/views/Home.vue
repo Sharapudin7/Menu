@@ -1,26 +1,18 @@
 <template>
   <div class="home">
-    <div class="post" v-for="item in allMenu" :key="item.id">
-      <h2>{{item.title}}</h2>
-      <p>{{item.body}}</p>
-    </div>
+    <Header/>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import {mapGetters, mapActions, mapMutations} from 'vuex'
+import Header from '@/components/Header'
+// import Menu from '@/views/Menu'
 
 export default {
   name: 'Home',
-  computed: {
-    ...mapGetters(['allMenu'])
+  components: {
+    Header
   },
-  methods: {
-    ...mapActions(['fetchMenu']),
-
-  },
-  async mounted() {
-    this.fetchMenu()
-  }
 }
 </script>

@@ -7,8 +7,19 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    component: Home,
+    children: [
+      {
+        path: '',
+        name: 'Menu',
+        component: () => import('../views/Menu.vue')
+      },
+      {
+        path: '/menu/:id',
+        name: 'MenuDetail',
+        component: () => import('../views/MenuDetail.vue')
+      }
+    ]
   },
   {
     path: '/order',

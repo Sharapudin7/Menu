@@ -1,7 +1,12 @@
 .navbar {
   width: 100%;
+  max-width: 375px;
   position: fixed;
   bottom: 0;
+
+  @media (min-width: 375px) {
+    left: calc(50% - (375px / 2));
+  }
 
   .navbar-inner {
     position: relative;
@@ -10,7 +15,7 @@
     align-items: flex-end;
     height: 60px;
     background: url('../assets/images/nav_bg.svg') no-repeat center;
-    background-size: 100%;
+    background-size: cover;
 
     &::before {
       content: '';
