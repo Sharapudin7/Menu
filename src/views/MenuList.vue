@@ -15,19 +15,12 @@ import MenuItem from '@/components/MenuItem'
 import {mapGetters, mapActions, mapMutations} from 'vuex'
 
 export default {
-  name: 'menu',
+  name: 'menuList',
   components: {
     MenuItem
   },
   computed: {
-    ...mapGetters(['allMenu'])
-  },
-  methods: {
-    ...mapActions(['fetchMenu']),
-
-  },
-  async mounted() {
-    this.fetchMenu(10)
+    ...mapGetters(['allMenu']),
   }
 }
 </script>

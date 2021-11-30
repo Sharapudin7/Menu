@@ -3,9 +3,16 @@
     <div class="logo">
       <img src="@/assets/images/logo.svg" alt="">
     </div>
+    <Search/>
   </header>
 </template>
 
-<style lang="scss">
-@import '@/assets/css/components/header.scss';
-</style>
+<script>
+import Search from '@/components/Search'
+
+export default {
+  components: {
+    Search
+  }
+}
+</script>

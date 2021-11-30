@@ -38,7 +38,3 @@
     </div>
   </nav>
 </template>
-
-<style lang="scss">
-@import '@/assets/css/components/navbar.scss';
-</style>

@@ -17,7 +17,3 @@ export default {
   props: ['title', 'url', 'id'],
 }
 </script>
-
-<style lang="scss">
-@import '@/assets/css/components/menu-item.scss';
-</style>

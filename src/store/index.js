@@ -20,14 +20,9 @@ export default new Vuex.Store({
     }
   },
   state: {
-    menu: []
+    menu: [],
   },
   getters: {
-    allMenu(state) {
-      return state.menu
-    }
-  },
-  modules: {
-
+    allMenu: state => state.menu,
   }
 })

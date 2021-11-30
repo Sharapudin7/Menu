@@ -33,44 +33,45 @@
       height: 32px;
       margin: 10px 0;
     }
-    .chars {
-      display: flex;
-      margin-bottom: 10px;
-
-      span {
-        position: relative;
-        color: #8F8F8F;
-        font-size: 10px;
-        padding-left: 12px;
-        
-        &::before {
-          content: '';
-          display: block;
-          width: 10px;
-          height: 10px;
-          position: absolute;
-          top: 0;
-          left: 0;
-        }
-
-        &.weight {
-          margin-right: 10px;
-
-          &::before {
-            background: url('../assets/images/weight_icon.svg') no-repeat center;
-            background-size: 100%;
-          }
-        }
-        &.time::before {
-          background: url('../assets/images/time_icon.svg') no-repeat center;
-          background-size: 100%;
-        }
-      }
-    }
     .price {
       font-size: 14px;
       font-weight: 600;
       color:#201F20;
+    }
+  }
+}
+
+.chars {
+  display: flex;
+  margin-bottom: 10px;
+
+  span {
+    position: relative;
+    color: #8F8F8F;
+    font-size: 10px;
+    padding-left: 12px;
+    
+    &::before {
+      content: '';
+      display: block;
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    &.weight {
+      margin-right: 10px;
+
+      &::before {
+        background: url('./assets/images/weight_icon.svg') no-repeat center;
+        background-size: 100%;
+      }
+    }
+    &.time::before {
+      background: url('./assets/images/time_icon.svg') no-repeat center;
+      background-size: 100%;
     }
   }
 }

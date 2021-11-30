@@ -12,11 +12,15 @@ const routes = [
       {
         path: '',
         name: 'Menu',
-        component: () => import('../views/Menu.vue')
+        component: () => import('../views/MenuList.vue')
       },
       {
         path: '/menu/:id',
         name: 'MenuDetail',
+        meta: {
+          navbar: false,
+          header: false
+        },
         component: () => import('../views/MenuDetail.vue')
       }
     ]
@@ -39,6 +43,9 @@ const routes = [
   {
     path: '/info',
     name: 'Info',
+    meta: {
+      header: false
+    },
     component: () => import('../views/Info.vue')
   }
 ]
