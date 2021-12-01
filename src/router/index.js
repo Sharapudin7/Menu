@@ -28,16 +28,26 @@ const routes = [
   {
     path: '/order',
     name: 'Order',
+    meta: {
+      search: false,
+      title: 'Заказ'
+    },
     component: () => import('../views/Order.vue')
   },
   {
     path: '/categories',
     name: 'Categories',
+    meta: {
+      title: 'Категории'
+    },
     component: () => import('../views/Categories.vue')
   },
   {
     path: '/likes',
     name: 'Likes',
+    meta: {
+      title: 'Избранное'
+    },
     component: () => import('../views/Likes.vue')
   },
   {

@@ -4,7 +4,7 @@
       <Header v-if="showHeader"/>
       <router-view/>
     </div>
-    <Navbar v-if="showSidebar"/>
+    <Navbar v-if="showNavbar"/>
   </div>
 </template>
 
@@ -18,7 +18,7 @@ export default {
     Navbar, Header
   },
   computed:{
-    showSidebar() {
+    showNavbar() {
       return this.$route.meta.navbar!==false;
     },
     showHeader() {

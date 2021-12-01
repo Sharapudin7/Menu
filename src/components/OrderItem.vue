@@ -1,11 +1,11 @@
 <template>
   <div class="order-item">
     <div class="image">
-      <img src="@/assets/images/info_banner.png" alt="">
+      <img :src="url" alt="">
     </div>
     <div class="main">
       <div class="title-block">
-        <span class="title">Red n hot pizza</span>
+        <span class="title">{{title}}</span>
         <span class="weight">420 г</span>
       </div>
       <div class="price-block">
@@ -17,12 +17,13 @@
         </div>
       </div>
     </div>
-    <button class="btn close">&#10006;</button>
+    <button class="btn delete" @click="deleteOrderItem(id)">&#10006;</button>
   </div>
 </template>
 
 <script>
 export default {
+  props: ['title', 'url', 'id'],
   data() {
     return {
       orderItemCount: 1
@@ -35,6 +36,9 @@ export default {
       } else if (btn == '+' && this.orderItemCount < 15) {
         this.orderItemCount += 1
       }
+    },
+    deleteOrderItem(id) {
+      this.$emit('deleteOrderItem', id)
     }
   }
 }
