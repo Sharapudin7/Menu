@@ -11,7 +11,7 @@
 <script>
 import Header from '@/components/Header'
 import Navbar from '@/components/Navbar.vue'
-import {mapGetters, mapActions, mapMutations} from 'vuex'
+import {mapActions} from 'vuex'
 
 export default {
   components: {
