@@ -11,9 +11,9 @@
       <div class="price-block">
         <div class="price">199₽</div>
         <div class="counter">
-          <input type="button" value="-" @click="countHandler('-')">
+          <input type="button" value="-" @click="countHandler('-', id)">
           <input type="text" v-model="orderItemCount">
-          <input type="button" value="+" @click="countHandler('+')">
+          <input type="button" value="+" @click="countHandler('+', id)">
         </div>
       </div>
     </div>
@@ -23,23 +23,22 @@
 
 <script>
 export default {
-  props: ['title', 'url', 'id'],
+  props: ['title', 'url', 'count', 'id'],
   data() {
     return {
       orderItemCount: 1
     }
   },
   methods: {
-    countHandler(btn) {
-      if (btn == '-' && this.orderItemCount > 1) {
-        this.orderItemCount -= 1
-      } else if (btn == '+' && this.orderItemCount < 15) {
-        this.orderItemCount += 1
-      }
+    countHandler(btn, id) {
+      this.$emit('countHandler', btn, id)
     },
     deleteOrderItem(id) {
       this.$emit('deleteOrderItem', id)
     }
+  },
+  mounted() {
+    this.orderItemCount = this.count
   }
 }
 </script>
