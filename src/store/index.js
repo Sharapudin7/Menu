@@ -5,9 +5,9 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   actions: {
-    async fetchMenu(ctx, limit = 10) {
+    async fetchMenu(ctx) {
       const res = await fetch(
-        'https://jsonplaceholder.typicode.com/photos?_limit=' + limit
+        'https://ich.djig-it.ru/products.php'
       );
       const menu = await res.json()
 
