@@ -1,19 +1,20 @@
 <template>
   <router-link :to="{path: `/menu/${id}`}" class="menu-item">
     <div class="image">
-      <img :src="url" alt="">
+      <img src="@/assets/images/preloader.png" alt="" class="preloader" v-if="!img">
+      <img :src="'https://rost05.ru/' + img" alt="" v-else>
     </div>
     <span class="title">{{title}}</span>
     <div class="chars">
-      <span class="weight">200г.</span>
-      <span class="time">30 мин.</span>
+      <span class="weight">{{weight}}</span>
+      <span class="time">{{time}}</span>
     </div>
-    <span class="price">199₽</span>
+    <span class="price">{{cost}}</span>
   </router-link>
 </template>
 
 <script>
 export default {
-  props: ['title', 'url', 'id'],
+  props: ['title', 'img', 'weight', 'cost', 'time','id'],
 }
 </script>

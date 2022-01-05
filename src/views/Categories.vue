@@ -1,23 +1,27 @@
 <template>
   <div class="categories">
-    <div class="category-wrapper" v-for="item in list" :key="item">
-      <CategoryItem />
+    <div class="category-wrapper" v-for="item in categories" :key="item.id">
+      <CategoryItem 
+        :id="item.id"
+        :name="item.name"
+        :parent="item.parent_id"
+        :img="item.picture"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import CategoryItem from '@/components/CategoryItem'
+import {mapGetters, mapActions, mapMutations} from 'vuex'
 
 export default {
   name: 'categories',
-  data() {
-    return {
-      list: 10
-    }
-  },
   components: {
     CategoryItem
+  },
+  computed: {
+    ...mapGetters(['categories']),
   }
 }
 </script>

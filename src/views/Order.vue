@@ -1,6 +1,5 @@
 <template>
   <div class="order">
-    {{allOrder}}
     <div class="order-nav" style="display: none">
       <button class="btn active">К заказу</button>
       <button class="btn">История</button>
@@ -9,8 +8,10 @@
       <OrderItem 
         v-for="item in order" 
         :key="item.id"
-        :title="item.title"
-        :url="item.url"
+        :name="item.name"
+        :img="item.detail_picture"
+        :cost="item.cost"
+        :weight="item.weight"
         :count="item.count"
         :id="item.id"
         @deleteOrderItem="deleteOrderItem"

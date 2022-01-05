@@ -1,15 +1,15 @@
 <template>
   <div class="order-item">
     <div class="image">
-      <img :src="url" alt="">
+      <img :src="'https://rost05.ru/' + img" alt="">
     </div>
     <div class="main">
       <div class="title-block">
-        <span class="title">{{title}}</span>
-        <span class="weight">420 г</span>
+        <span class="title">{{name}}</span>
+        <span class="weight">{{weight}}</span>
       </div>
       <div class="price-block">
-        <div class="price">199₽</div>
+        <div class="price">{{cost}}</div>
         <div class="counter">
           <input type="button" value="-" @click="countHandler('-', id)">
           <input type="text" v-model="orderItemCount">
@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  props: ['title', 'url', 'count', 'id'],
+  props: ['name', 'img', 'count', 'id', 'cost', 'weight'],
   data() {
     return {
       orderItemCount: 1

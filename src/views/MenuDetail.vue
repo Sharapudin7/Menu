@@ -27,15 +27,15 @@
       </svg>
     </button>
     <div class="menu-detail__image">
-      <img :src="menuItemDetail.url" alt="">
+      <img :src="'https://rost05.ru/' + menuItemDetail.detail_picture" alt="">
     </div>
-    <h2 class="menu-detail__title">{{menuItemDetail.title}}</h2>
+    <h2 class="menu-detail__title">{{menuItemDetail.name}}</h2>
     <div class="chars menu-detail__chars">
-      <span class="weight">200г.</span>
-      <span class="time">30 мин.</span>
+      <span class="weight">{{menuItemDetail.weight}}</span>
+      <span class="time">{{menuItemDetail.cooking_time}}</span>
     </div>
     <div class="menu-detail__price-block">
-      <span class="price">199₽</span> 
+      <span class="price">{{menuItemDetail.cost}}</span> 
       <div class="counter">
         <input type="button" value="-" @click="countHandler('-')">
         <input type="text" v-model="orderItemCount">
@@ -51,8 +51,11 @@
       <div class="menu">
         <div class="menu-item-wrapper" v-for="item in allMenu" :key="item.id">
           <MenuItem
-            :title="item.title"
-            :url="item.url"
+            :title="item.name"
+            :img="item.detail_picture"
+            :weight="item.weight"
+            :cost="item.cost"
+            :time="item.cooking_time"
             :id="item.id"
           />
         </div>

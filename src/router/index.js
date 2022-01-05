@@ -40,7 +40,23 @@ const routes = [
     meta: {
       title: 'Категории'
     },
-    component: () => import('../views/Categories.vue')
+    component: () => import('../views/Categories.vue'),
+    children: [
+      {
+        path: '/menu',
+        name: 'Category',
+        component: () => import('../views/MenuList.vue')
+      },
+      {
+        path: '/menu/:id',
+        name: 'CategoryItem',
+        meta: {
+          navbar: false,
+          header: false
+        },
+        component: () => import('../views/MenuDetail.vue')
+      }
+    ]
   },
   {
     path: '/likes',

@@ -17,6 +17,11 @@ export default {
   components: {
     Navbar, Header
   },
+  data() {
+    return {
+      json: null
+    }
+  },
   computed:{
     showNavbar() {
       return this.$route.meta.navbar!==false;
@@ -26,10 +31,12 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['fetchMenu'])
+    ...mapActions(['fetchMenu']),
+    ...mapActions(['fetchCategories'])
   },
   async mounted() {
-    this.fetchMenu(10)
+    this.fetchMenu()
+    this.fetchCategories()
   }
 }
 </script>

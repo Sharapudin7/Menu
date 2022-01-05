@@ -2,8 +2,11 @@
   <div class="menu">
     <div class="menu-item-wrapper" v-for="item in allMenu" :key="item.id">
       <MenuItem
-        :title="item.title"
-        :url="item.url"
+        :title="item.name"
+        :img="item.detail_picture"
+        :weight="item.weight"
+        :cost="item.cost"
+        :time="item.cooking_time"
         :id="item.id"
       />
     </div>

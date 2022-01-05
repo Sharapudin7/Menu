@@ -1,6 +1,5 @@
 <template>
   <div class="menu">
-    {{allMenu}}
     <div class="menu-item-wrapper" v-for="item in allMenu" :key="item.id">
       <MenuItem
         :title="item.title"
