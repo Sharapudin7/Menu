@@ -19,8 +19,8 @@
       />
     </div>
     <div class="order-total" v-if="order.length">
-      <div class="count">Итого <span>(3 позиции)</span></div>
-      <div class="price">199Р</div>
+      <div class="count">Итого <span>({{totalPosition}} позиции)</span></div>
+      <div class="price">{{costTotal}}</div>
     </div>
     <div class="order-total" v-else>Вы еще не добавили заказ</div>
   </div>
@@ -42,37 +42,37 @@ export default {
   computed: {
     ...mapGetters(['allOrder']),
 
-    // costTotal() {
-    //   if(this.order.length) {
-    //   let result = [];
-    //   for (let item of this.order) {
-    //     let cost = Number.parseInt(item.cost)
-    //     result.push(item.count * cost);
-    //   }
-    //   result = result.reduce(function(el, sum) {
-    //     return el + sum
-    //   })
-    //   return result;
-    //   }
-    //   else {
-    //     return 0;
-    //   }
-    // },
-    // totalPosition() {
-    //   if(this.order.length) {
-    //   let res = [];
-    //   for (let item of this.order) {
-    //     res.push(item.count);
-    //   }
-    //   res = res.reduce(function(el, sum) {
-    //     return el + sum
-    //   })
-    //   return res;
-    //   }
-    //   else {
-    //     return 0;
-    //   }
-    // }
+    costTotal() {
+      if(this.order.length) {
+      let result = [];
+      for (let item of this.order) {
+        let cost = Number.parseInt(item.cost)
+        result.push(item.count * cost);
+      }
+      result = result.reduce(function(el, sum) {
+        return el + sum
+      })
+      return result;
+      }
+      else {
+        return 0;
+      }
+    },
+    totalPosition() {
+      if(this.order.length) {
+      let res = [];
+      for (let item of this.order) {
+        res.push(item.count);
+      }
+      res = res.reduce(function(el, sum) {
+        return el + sum
+      })
+      return res;
+      }
+      else {
+        return 0;
+      }
+    }
   },
   methods: {
     ...mapActions(['getOrder']),
