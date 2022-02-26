@@ -1,9 +1,9 @@
 <template>
   <div class="categories">
-    <div class="category-wrapper" v-for="item in categories" :key="item.id">
+    <div class="category-wrapper" v-for="item in categories.categories_menu" :key="item.id">
       <CategoryItem 
         :id="item.id"
-        :name="item.name"
+        :title="item.title"
         :parent="item.parent_id"
         :img="item.picture"
       />

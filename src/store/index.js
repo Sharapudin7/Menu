@@ -7,7 +7,7 @@ export default new Vuex.Store({
   actions: {
     async fetchMenu(ctx) {
       const res = await fetch(
-        'https://rost05.ru/products.php'
+        'https://it-dag.ru/restapi/food?restaurant_id=1'
       );
       const menu = await res.json()
 
@@ -15,7 +15,7 @@ export default new Vuex.Store({
     },
     async fetchCategories(ctx) {
       const res = await fetch(
-        'https://rost05.ru/cat.php'
+        'https://it-dag.ru/restapi/restaurant?id=1'
       );
       const categories = await res.json()
 

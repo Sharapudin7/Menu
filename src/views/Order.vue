@@ -5,11 +5,11 @@
       <button class="btn">История</button>
     </div>
     <div class="order-items">
-      <OrderItem 
+      <OrderItem
         v-for="item in order" 
         :key="item.id"
-        :name="item.name"
-        :img="item.detail_picture"
+        :title="item.title"
+        :img="item.picture"
         :cost="item.cost"
         :weight="item.weight"
         :count="item.count"
@@ -18,13 +18,11 @@
         @countHandler="countHandler"
       />
     </div>
-    <div class="order-total" v-if="order">
+    <div class="order-total" v-if="order.length">
       <div class="count">Итого <span>(3 позиции)</span></div>
-      <div class="price">199₽</div>
+      <div class="price">199Р</div>
     </div>
-    <!-- <div class="order-empty">
-      <strong>В еще ничего не добавили в заказ</strong>
-    </div> -->
+    <div class="order-total" v-else>Вы еще не добавили заказ</div>
   </div>
 </template>
 
@@ -42,7 +40,39 @@ export default {
     OrderItem
   },
   computed: {
-    ...mapGetters(['allOrder'])
+    ...mapGetters(['allOrder']),
+
+    // costTotal() {
+    //   if(this.order.length) {
+    //   let result = [];
+    //   for (let item of this.order) {
+    //     let cost = Number.parseInt(item.cost)
+    //     result.push(item.count * cost);
+    //   }
+    //   result = result.reduce(function(el, sum) {
+    //     return el + sum
+    //   })
+    //   return result;
+    //   }
+    //   else {
+    //     return 0;
+    //   }
+    // },
+    // totalPosition() {
+    //   if(this.order.length) {
+    //   let res = [];
+    //   for (let item of this.order) {
+    //     res.push(item.count);
+    //   }
+    //   res = res.reduce(function(el, sum) {
+    //     return el + sum
+    //   })
+    //   return res;
+    //   }
+    //   else {
+    //     return 0;
+    //   }
+    // }
   },
   methods: {
     ...mapActions(['getOrder']),
@@ -63,6 +93,8 @@ export default {
     countHandler(btn, id) {
       this.order = JSON.parse(localStorage.getItem('order'))
       console.log(this.order)
+
+      
     }
   },
   mounted() {

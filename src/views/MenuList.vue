@@ -1,9 +1,9 @@
 <template>
   <div class="menu">
-    <div class="menu-item-wrapper" v-for="item in allMenu" :key="item.id">
+    <div class="menu-item-wrapper" v-for="item in allMenu.food" :key="item.id">
       <MenuItem
-        :title="item.name"
-        :img="item.detail_picture"
+        :title="item.title"
+        :img="item.picture"
         :weight="item.weight"
         :cost="item.cost"
         :time="item.cooking_time"

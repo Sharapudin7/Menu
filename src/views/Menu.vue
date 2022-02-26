@@ -1,6 +1,6 @@
 <template>
   <div class="menu">
-    <div class="menu-item-wrapper" v-for="item in allMenu" :key="item.id">
+    <div class="menu-item-wrapper" v-for="item in allMenu.food" :key="item.id">
       <MenuItem
         :title="item.title"
         :url="item.url"
@@ -20,11 +20,10 @@ export default {
     MenuItem
   },
   computed: {
-    ...mapGetters(['allMenu'])
+    ...mapGetters(['allMenu']),
   },
   methods: {
     ...mapActions(['fetchMenu']),
-
   },
   async mounted() {
     this.fetchMenu(10)

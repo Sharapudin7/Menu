@@ -1,13 +1,14 @@
 <template>
   <div class="order-item">
     <div class="image">
-      <img :src="'https://rost05.ru/' + img" alt="">
+      <img :src="img" alt="">
     </div>
     <div class="main">
       <div class="title-block">
-        <span class="title">{{name}}</span>
+        <span class="title">{{title}}</span>
         <span class="weight">{{weight}}</span>
       </div>
+   
       <div class="price-block">
         <div class="price">{{cost}}</div>
         <div class="counter">
@@ -19,11 +20,12 @@
     </div>
     <button class="btn delete" @click="deleteOrderItem(id)">&#10006;</button>
   </div>
+  
 </template>
 
 <script>
 export default {
-  props: ['name', 'img', 'count', 'id', 'cost', 'weight'],
+  props: ['title', 'img', 'count', 'id', 'cost', 'weight'],
   data() {
     return {
       orderItemCount: 1

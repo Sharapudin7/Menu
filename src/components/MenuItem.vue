@@ -2,7 +2,7 @@
   <router-link :to="{path: `/menu/${id}`}" class="menu-item">
     <div class="image">
       <img src="@/assets/images/preloader.png" alt="" class="preloader" v-if="!img">
-      <img :src="'https://rost05.ru/' + img" alt="" v-else>
+      <img :src="img" alt="" v-else>
     </div>
     <span class="title">{{title}}</span>
     <div class="chars">

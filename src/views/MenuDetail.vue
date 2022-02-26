@@ -27,9 +27,9 @@
       </svg>
     </button>
     <div class="menu-detail__image">
-      <img :src="'https://rost05.ru/' + menuItemDetail.detail_picture" alt="">
+      <img :src="menuItemDetail.picture" alt="">
     </div>
-    <h2 class="menu-detail__title">{{menuItemDetail.name}}</h2>
+    <h2 class="menu-detail__title">{{menuItemDetail.title}}</h2>
     <div class="chars menu-detail__chars">
       <span class="weight">{{menuItemDetail.weight}}</span>
       <span class="time">{{menuItemDetail.cooking_time}}</span>
@@ -43,16 +43,21 @@
       </div>
     </div>
     <div class="menu-detail__description">
-      Короткое описание блюда и его состав, в несколько строк, примерно два -три, можно и до пяти
+      <span v-if="menuItemDetail.description">
+        {{menuItemDetail.description}}
+      </span>
+      <span v-else>
+        Короткое описание блюда и его состав, в несколько строк, примерно два -три, можно и до пяти
+      </span>
     </div>
 
     <div class="recommend">
       <span class="recommend-title">C этим заказывают</span>
       <div class="menu">
-        <div class="menu-item-wrapper" v-for="item in allMenu" :key="item.id">
+        <div class="menu-item-wrapper" v-for="item in allMenu.food" :key="item.id">
           <MenuItem
-            :title="item.name"
-            :img="item.detail_picture"
+            :title="item.title"
+            :img="item.picture"
             :weight="item.weight"
             :cost="item.cost"
             :time="item.cooking_time"
@@ -82,12 +87,23 @@ export default {
   computed: {
     ...mapGetters(['allMenu']),
     menuItemDetail() {
-      return this.allMenu.find(item => item.id == this.$route.params.id)
+
+      // const menu = this.allMenu.food
+
+
+      // for(let i in menu) {
+      //   console.log(menu[i]) //.find(item => item.id == this.$route.params.id) 
+      // }
+      // return menu["1"]
+
+    // return this.allMenu.food?.find(item => item.id == this.$route.params.id)
+      // return this.allMenu.food.find(item => item.id == this.$route.params.id) 
+      
+    return this.allMenu && this.allMenu.food ? Object.values(this.allMenu.food).find(item => item.id == this.$route.params.id) : []
     },
     isLike() {
       if (localStorage.getItem('likes')) {
         this.likes = JSON.parse(localStorage.getItem('likes'))
-
         if(this.likes.find(item => item.id === this.menuItemDetail.id)) {
           return true
         }
@@ -96,7 +112,6 @@ export default {
     inOrder() {
       if (localStorage.getItem('order')) {
         this.order = JSON.parse(localStorage.getItem('order'))
-
         if(this.order.find(item => item.id === this.menuItemDetail.id)) {
           const orderItem = this.order.find(item => item.id === this.menuItemDetail.id)
           this.orderItemCount = orderItem.count

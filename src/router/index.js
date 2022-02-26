@@ -51,7 +51,7 @@ const routes = [
         path: '/menu/:id',
         name: 'CategoryItem',
         meta: {
-          navbar: false,
+          navbar: true,
           header: false
         },
         component: () => import('../views/MenuDetail.vue')
