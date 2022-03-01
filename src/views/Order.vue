@@ -93,8 +93,6 @@ export default {
     countHandler(btn, id) {
       this.order = JSON.parse(localStorage.getItem('order'))
       console.log(this.order)
-
-      
     }
   },
   mounted() {

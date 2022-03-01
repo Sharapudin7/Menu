@@ -1,9 +1,12 @@
 <template>
   <div class="menu">
-    <div class="menu-item-wrapper" v-for="item in allMenu.food" :key="item.id">
+    <div class="menu-item-wrapper" v-for="item in filterCategory" :key="item.id">
       <MenuItem
         :title="item.title"
-        :url="item.url"
+        :img="item.picture"
+        :weight="item.weight"
+        :cost="item.cost"
+        :time="item.cooking_time"
         :id="item.id"
       />
     </div>
@@ -21,6 +24,12 @@ export default {
   },
   computed: {
     ...mapGetters(['allMenu']),
+    filterCategory() {
+    if (!this.allMenu?.food) {
+      return [];
+    }
+    return Object.values(this.allMenu.food).filter(item =>  Number(item.category_id) === Number(this.$route.params.id));
+}
   },
   methods: {
     ...mapActions(['fetchMenu']),

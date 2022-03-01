@@ -8,6 +8,7 @@
         :img="item.picture"
       />
     </div>
+    <router-view></router-view>
   </div>
 </template>
 

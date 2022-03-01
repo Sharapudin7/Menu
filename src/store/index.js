@@ -45,6 +45,6 @@ export default new Vuex.Store({
   getters: {
     allMenu: state => state.menu,
     categories: state => state.categories,
-    allOrder: state => state.order
+    allOrder: state => state.order,
   }
 })

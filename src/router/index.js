@@ -45,7 +45,7 @@ const routes = [
       {
         path: '/menu',
         name: 'Category',
-        component: () => import('../views/MenuList.vue')
+        component: () => import('../views/Menu.vue')
       },
       {
         path: '/menu/:id',
@@ -57,6 +57,15 @@ const routes = [
         component: () => import('../views/MenuDetail.vue')
       }
     ]
+  },
+  {
+    path: '/category/:id',
+    name: 'Cat',
+    meta: {
+      navbar: true,
+      header: false
+    },
+    component: () => import('../views/Category.vue')
   },
   {
     path: '/likes',

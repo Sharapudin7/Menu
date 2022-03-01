@@ -86,20 +86,8 @@ export default {
   },
   computed: {
     ...mapGetters(['allMenu']),
-    menuItemDetail() {
-
-      // const menu = this.allMenu.food
-
-
-      // for(let i in menu) {
-      //   console.log(menu[i]) //.find(item => item.id == this.$route.params.id) 
-      // }
-      // return menu["1"]
-
-    // return this.allMenu.food?.find(item => item.id == this.$route.params.id)
-      // return this.allMenu.food.find(item => item.id == this.$route.params.id) 
-      
-    return this.allMenu && this.allMenu.food ? Object.values(this.allMenu.food).find(item => item.id == this.$route.params.id) : []
+    menuItemDetail() {      
+      return this.allMenu && this.allMenu.food ? Object.values(this.allMenu.food).find(item => item.id == this.$route.params.id) : []
     },
     isLike() {
       if (localStorage.getItem('likes')) {
