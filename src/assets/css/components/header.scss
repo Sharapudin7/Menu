@@ -1,0 +1,17 @@
+.header {
+  margin-bottom: 25px;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      max-width: 100%;
+    }
+  }
+  .title h3 {
+    text-align: center;
+    margin: 0;
+  }
+}

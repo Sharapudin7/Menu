@@ -1,0 +1,97 @@
+@import './components/header.scss';
+@import './components/info.scss';
+@import './components/menu-detail.scss';
+@import './components/menu-item.scss';
+@import './components/search.scss';
+@import './components/categories.scss';
+@import './components/navbar.scss';
+@import './components/order.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Rubik', sans-serif;
+}
+
+#app {
+  background: #F6F7FC;
+  min-height: 100vh;
+  padding-top: 25px;
+  padding-bottom: 90px;
+}
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+button {
+  border: none;
+  outline: none;
+  background: none;
+}
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+.container {
+  width: 100%;
+  max-width: 375px;
+  margin: auto;
+  padding: 0 15px;
+}
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 -6px;
+}
+.to-order {
+  position: fixed;
+  bottom: 30px;
+  left: calc(50% - (225px / 2));
+  width: 225px;
+  height: 55px;
+  background: #FE724C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  padding-left: 20px;
+  z-index: 1;
+
+  .image {
+    position: absolute;
+    left: 7.5px;
+    top: 7.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #fff;
+
+    svg {
+      max-width: 22px;
+
+      path {
+        fill: #FE724C;
+      }
+    }
+  }
+
+  span {
+    font-size: 15px;
+    color: #fff;
+  }
+}
