@@ -1,6 +1,6 @@
 <template>
   <div class="menu">
-    <div class="menu-item-wrapper" v-for="item in allMenu.food" :key="item.id">
+    <div class="menu-item-wrapper" v-for="item in searchFood" :key="item.id">
       <MenuItem
         :title="item.title"
         :img="item.picture"
@@ -24,6 +24,10 @@ export default {
   },
   computed: {
     ...mapGetters(['allMenu']),
+    ...mapGetters(['searchFood']),
+  },
+    methods: {
+    ...mapMutations(['updateSearch']),
   }
 }
 </script>

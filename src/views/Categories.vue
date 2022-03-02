@@ -1,6 +1,6 @@
 <template>
   <div class="categories">
-    <div class="category-wrapper" v-for="item in categories.categories_menu" :key="item.id">
+    <div class="category-wrapper" v-for="item in searchCategory" :key="item.id">
       <CategoryItem 
         :id="item.id"
         :title="item.title"
@@ -23,6 +23,7 @@ export default {
   },
   computed: {
     ...mapGetters(['categories']),
+    ...mapGetters(['searchCategory']),
   }
 }
 </script>

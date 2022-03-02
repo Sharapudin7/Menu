@@ -87,7 +87,7 @@ export default {
   computed: {
     ...mapGetters(['allMenu']),
     menuItemDetail() {      
-      return this.allMenu && this.allMenu.food ? Object.values(this.allMenu.food).find(item => item.id == this.$route.params.id) : []
+    return this.allMenu && this.allMenu.food ? Object.values(this.allMenu.food).find(item => item.id == this.$route.params.id) : []
     },
     isLike() {
       if (localStorage.getItem('likes')) {

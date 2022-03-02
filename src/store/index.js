@@ -35,16 +35,32 @@ export default new Vuex.Store({
     },
     updateOrder(state, order) {
       state.order = order
+    },
+    updateSearch(state, search) {
+      state.search = search
     }
   },
   state: {
     menu: [],
     categories: [],
-    order: []
+    order: [],
+    search: ''
   },
   getters: {
     allMenu: state => state.menu,
     categories: state => state.categories,
     allOrder: state => state.order,
+    searchFood: state => {
+      return state.menu && state.menu.food ? Object.values(state.menu.food).filter(item => {
+        return item.title.toLowerCase().includes(state.search)
+      }
+      ) : []
+     },
+     searchCategory: state => {
+      return state.categories && state.categories.categories_menu ? Object.values(state.categories.categories_menu).filter(item => {
+        return item.title.toLowerCase().includes(state.search)
+      }
+      ) : []
+     }
   }
 })
