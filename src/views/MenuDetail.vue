@@ -115,7 +115,7 @@ export default {
         if (this.inOrder) {
           this.addToOrder(true)
         }
-      } else if (btn == '+' && this.orderItemCount < 15) {
+      } else if (btn == '+' && this.orderItemCount < 15 ) {
         this.orderItemCount += 1
         if (this.inOrder) {
           this.addToOrder(true)

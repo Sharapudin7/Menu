@@ -4,6 +4,7 @@
       <button class="btn active">К заказу</button>
       <button class="btn">История</button>
     </div>
+    
     <div class="order-items">
       <OrderItem
         v-for="item in order" 
@@ -20,20 +21,21 @@
     </div>
     <div class="order-total" v-if="order.length">
       <div class="count">Итого <span>({{totalPosition}} позиции)</span></div>
-      <div class="price">{{costTotal}}</div>
+      <div class="price">{{costTotal}} руб.</div>
     </div>
     <div class="order-total" v-else>Вы еще не добавили заказ</div>
   </div>
 </template>
 
 <script>
-import {mapGetters, mapActions} from 'vuex'
+import {mapGetters, mapActions, mapMutations} from 'vuex'
 import OrderItem from '@/components/OrderItem'
 
 export default {
   data() {
     return {
-      order: null,
+      order: '',
+      orderCountItem: []
     }
   },
   components: {
@@ -41,7 +43,6 @@ export default {
   },
   computed: {
     ...mapGetters(['allOrder']),
-
     costTotal() {
       if(this.order.length) {
       let result = [];
@@ -53,7 +54,7 @@ export default {
         return el + sum
       })
       return result;
-      }
+      } 
       else {
         return 0;
       }
@@ -92,7 +93,7 @@ export default {
     },
     countHandler(btn, id) {
       this.order = JSON.parse(localStorage.getItem('order'))
-      console.log(this.order)
+      console.log(this.order);
     }
   },
   mounted() {

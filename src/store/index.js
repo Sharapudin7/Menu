@@ -24,7 +24,7 @@ export default new Vuex.Store({
     async getOrder(ctx) {
       let order = JSON.parse(localStorage.getItem('order'))
       ctx.commit('updateOrder', order)
-    }
+    },
   },
   mutations: {
     updateMenu(state, menu) {
@@ -38,13 +38,13 @@ export default new Vuex.Store({
     },
     updateSearch(state, search) {
       state.search = search
-    }
+    },
   },
   state: {
     menu: [],
     categories: [],
     order: [],
-    search: ''
+    search: '',
   },
   getters: {
     allMenu: state => state.menu,
@@ -58,7 +58,9 @@ export default new Vuex.Store({
      },
      searchCategory: state => {
       return state.categories && state.categories.categories_menu ? Object.values(state.categories.categories_menu).filter(item => {
-        return item.title.toLowerCase().includes(state.search)
+        if (item.parent_id == null) {
+          return item.title.toLowerCase().includes(state.search)
+        }
       }
       ) : []
      }

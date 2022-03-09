@@ -1,7 +1,15 @@
 <template>
-  <div class="menu">
-    <div class="menu-item-wrapper" v-for="item in filterCategory" :key="item.id">
-      <MenuItem
+  <div class="categories">
+    <div class="category-wrapper" v-for="item in filterCategory" :key="item.id">
+       <CategoryItem 
+        :id="item.id"
+        :title="item.title"
+        :parent="item.parent_id"
+        :img="item.picture"
+      />
+    </div>
+    <div class="menu-item-wrapper" v-for="item in filterFood" :key="item.id">
+       <MenuItem
         :title="item.title"
         :img="item.picture"
         :weight="item.weight"
@@ -15,21 +23,27 @@
 
 <script>
 import MenuItem from '@/components/MenuItem'
+import CategoryItem from '@/components/CategoryItem'
 import {mapGetters, mapActions, mapMutations} from 'vuex'
 
 export default {
   name: 'menu',
   components: {
-    MenuItem
+    MenuItem,CategoryItem
+
   },
   computed: {
-    ...mapGetters(['allMenu']),
+    ...mapGetters(['allMenu', 'categories']),
     filterCategory() {
-    if (!this.allMenu?.food) {
-      return [];
+    if (this.categories?.categories_menu) {
+     return Object.values(this.categories.categories_menu).filter(item =>  Number(item.parent_id) === Number(this.$route.params.id));
     }
-    return Object.values(this.allMenu.food).filter(item =>  Number(item.category_id) === Number(this.$route.params.id));
-}
+  },
+    filterFood() {
+      if (this.allMenu?.food) {
+      return Object.values(this.allMenu.food).filter(item =>  Number(item.category_id) === Number(this.$route.params.id));
+    }
+    }
   },
   methods: {
     ...mapActions(['fetchMenu']),

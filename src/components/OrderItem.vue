@@ -13,7 +13,7 @@
         <div class="price">{{cost}}</div>
         <div class="counter">
           <input type="button" value="-" @click="countHandler('-', id)">
-          <input type="text" v-model="orderItemCount">
+          <input type="text" v-model="count">
           <input type="button" value="+" @click="countHandler('+', id)">
         </div>
       </div>
@@ -24,20 +24,25 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex'
 export default {
-  props: ['title', 'img', 'count', 'id', 'cost', 'weight'],
+  props: ['title', 'img', 'count', 'id', 'cost', 'weight', 'itemCount'],
   data() {
     return {
       orderItemCount: 1
     }
   },
   methods: {
+        ...mapMutations(['updateCount']),
     countHandler(btn, id) {
       this.$emit('countHandler', btn, id)
     },
     deleteOrderItem(id) {
       this.$emit('deleteOrderItem', id)
-    }
+    },
+    countItem() {
+      this.$emit('countItem', this.orderItemCount)
+    },
   },
   mounted() {
     this.orderItemCount = this.count
