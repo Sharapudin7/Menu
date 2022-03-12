@@ -15,12 +15,13 @@
 
 <script>
 import MenuItem from '@/components/MenuItem'
+import Tabs from '@/components/Tabs'
 import {mapGetters, mapActions, mapMutations} from 'vuex'
 
 export default {
   name: 'menuList',
   components: {
-    MenuItem
+    MenuItem,Tabs
   },
   computed: {
     ...mapGetters(['allMenu']),

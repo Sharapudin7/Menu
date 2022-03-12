@@ -13,8 +13,9 @@
         <div class="price">{{cost}}</div>
         <div class="counter">
           <input type="button" value="-" @click="countHandler('-', id)">
-          <input type="text" v-model="count">
-          <input type="button" value="+" @click="countHandler('+', id)">
+          <input type="text" :value="count">
+          <input type="button" value="+"  @click="countHandler('+', id)">
+ 
         </div>
       </div>
     </div>
@@ -33,7 +34,7 @@ export default {
     }
   },
   methods: {
-        ...mapMutations(['updateCount']),
+    ...mapMutations(['updateCount']),
     countHandler(btn, id) {
       this.$emit('countHandler', btn, id)
     },

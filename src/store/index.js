@@ -5,9 +5,9 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   actions: {
-    async fetchMenu(ctx) {
+    async fetchMenu(ctx, idx=1) {
       const res = await fetch(
-        'https://it-dag.ru/restapi/food?restaurant_id=1'
+        `https://it-dag.ru/restapi/food?restaurant_id=${idx}`
       );
       const menu = await res.json()
 
@@ -25,8 +25,20 @@ export default new Vuex.Store({
       let order = JSON.parse(localStorage.getItem('order'))
       ctx.commit('updateOrder', order)
     },
+    INCREMENT_ITEM({commit}, index) {
+      commit('INCREMENT', index)
+    },
+    DECREMENT_ITEM({commit}, index) {
+      commit('DECREMENT', index)
+    }
   },
   mutations: {
+    INCREMENT: (state, index) => {
+      Object.values(state.menu.food)[index].count++
+    },
+    DECREMENT: (state, index) => {
+      state.menu.food[index].count--
+    },
     updateMenu(state, menu) {
       state.menu = menu
     },
@@ -39,6 +51,7 @@ export default new Vuex.Store({
     updateSearch(state, search) {
       state.search = search
     },
+    
   },
   state: {
     menu: [],

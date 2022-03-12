@@ -35,7 +35,6 @@ export default {
   data() {
     return {
       order: '',
-      orderCountItem: []
     }
   },
   components: {
@@ -92,8 +91,16 @@ export default {
       this.getOrder()
     },
     countHandler(btn, id) {
-      this.order = JSON.parse(localStorage.getItem('order'))
-      console.log(this.order);
+    this.order = JSON.parse(localStorage.getItem('order'))
+    this.order.forEach((element, index) => {
+      if (btn === '+' && element.count < 15 && element.id === id) {
+          this.order[index].count++;
+          localStorage.setItem('order', JSON.stringify(this.order))
+        }else if(btn === '-' && element.count > 1 && element.id === id) {
+          this.order[index].count--;
+          localStorage.setItem('order', JSON.stringify(this.order))
+        }
+      })
     }
   },
   mounted() {
