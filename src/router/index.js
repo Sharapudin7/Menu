@@ -10,7 +10,7 @@ const routes = [
     component: Home,
     children: [
       {
-        path: '',
+        path: '/',
         name: 'Menu',
         component: () => import('../views/MenuList.vue')
       },
@@ -42,11 +42,7 @@ const routes = [
     },
     component: () => import('../views/Categories.vue'),
     children: [
-      {
-        path: '/menu',
-        name: 'Category',
-        component: () => import('../views/Menu.vue')
-      },
+      
       {
         path: '/menu/:id',
         name: 'CategoryItem',
@@ -58,15 +54,15 @@ const routes = [
       }
     ]
   },
-  {
-    path: '/category/:id',
-    name: 'Cat',
-    meta: {
-      navbar: true,
-      header: false
+    {
+      path: '/category/:id',
+      name: 'Cat',
+      meta: {
+        navbar: true,
+        header: false
+      },
+      component: () => import('../views/Category.vue')
     },
-    component: () => import('../views/Category.vue')
-  },
   {
     path: '/likes',
     name: 'Likes',

@@ -23,7 +23,11 @@ export default {
     },
     showTitle() {
       return this.$route.meta.title;
-    }
+    },
+    // ...mapGetters(['allMenu']),
+    //  info() {
+    //    return this.allMenu
+    //  }
   },
 }
 </script>

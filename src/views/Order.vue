@@ -90,7 +90,7 @@ export default {
       this.orderList(id)
       this.getOrder()
     },
-    countHandler(btn, id) {
+    countHandler(btn, id) {;
     this.order = JSON.parse(localStorage.getItem('order'))
     this.order.forEach((element, index) => {
       if (btn === '+' && element.count < 15 && element.id === id) {

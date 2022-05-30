@@ -1,6 +1,6 @@
 <template>
   <div class="categories">
-    <div class="category-wrapper" v-for="item in filterCategory" :key="item.id">
+    <div @click="scrollTop" class="category-wrapper" v-for="item in filterCategory" :key="item.id">
        <CategoryItem 
         :id="item.id"
         :title="item.title"
@@ -8,7 +8,7 @@
         :img="item.picture"
       />
     </div>
-    <div class="menu-item-wrapper" v-for="item in filterFood" :key="item.id">
+    <div @click="scrollTop" class="menu-item-wrapper" v-for="item in filterFood" :key="item.id">
        <MenuItem
         :title="item.title"
         :img="item.picture"
@@ -30,7 +30,6 @@ export default {
   name: 'menu',
   components: {
     MenuItem,CategoryItem
-
   },
   computed: {
     ...mapGetters(['allMenu', 'categories']),
@@ -47,6 +46,12 @@ export default {
   },
   methods: {
     ...mapActions(['fetchMenu']),
+    scrollTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+    }
 },
   async mounted() {
     this.fetchMenu(10)

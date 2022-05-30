@@ -1,6 +1,6 @@
 <template>
   <div class="menu">
-    <div class="menu-item-wrapper" v-for="item in searchFood" :key="item.id">
+    <div @click="scrollTop" class="menu-item-wrapper" v-for="item in searchFood" :key="item.id">
       <MenuItem
         :title="item.title"
         :img="item.picture"
@@ -24,11 +24,16 @@ export default {
     MenuItem,Tabs
   },
   computed: {
-    ...mapGetters(['allMenu']),
     ...mapGetters(['searchFood']),
   },
     methods: {
     ...mapMutations(['updateSearch']),
+    scrollTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+    }
   }
 }
 </script>
